@@ -6,8 +6,10 @@ Extracts its data from openweathermap.org
 python3, requests(package), django(package)
 
 ### Installation:
-#### Install requests: pip3 install requests
-#### Install django: pip3 install django
+#### Install requests:
+pip3 install requests
+#### Install django:
+pip3 install django
 
 ### How to run?
 Open terminal and type:
