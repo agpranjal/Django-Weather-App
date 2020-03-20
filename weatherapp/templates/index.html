@@ -27,7 +27,7 @@
 
     {%if error%}
     <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-        <strong>No such place exists</strong>
+        <strong>City not found!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -39,7 +39,7 @@
 
         <form class="form-inline mt-3" action="/" method="POST"> {%csrf_token%}
             <div class="form-group">
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter place name"
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter city name"
                     aria-describedby="emailHelp" name="city_name" required>
             </div>
 
