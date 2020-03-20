@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import City
 import requests
@@ -24,12 +24,19 @@ def get_weather_data(city_name):
     return weather_data
 
 def index(request):
-    weather_data = {}
-
     if request.method == "POST":
         city_name = request.POST["city_name"].capitalize()
-        weather_data = get_weather_data(city_name)
+        try:
+            weather_data = get_weather_data(city_name)
+        except:
+            return render(request, "index.html", {"error":True, "all_cities":City.objects.order_by("-id")})
+        new_city = City(city_name=weather_data["city_name"], country_name=weather_data["country_name"], temperature=weather_data["temperature"], description=weather_data["description"])
+        new_city.save() 
 
-    new_city = City(weather_data)
-    
-    return render(request, "index.html", weather_data) 
+    return render(request, "index.html", {"all_cities":City.objects.order_by("-id")}) 
+
+def clearall(request):
+    if request.method == "POST":
+        for city in City.objects.all():
+            city.delete()
+        return redirect("/")
