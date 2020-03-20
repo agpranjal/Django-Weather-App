@@ -1,5 +1,6 @@
 # Django-Weather-App
 A simple weather application written in django.
+Extracts its data from openweathermap.org
 
 ### Requirements:
 python3, requests(package), django(package)
